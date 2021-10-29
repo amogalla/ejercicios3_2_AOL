@@ -37,7 +37,7 @@ class Persona(private val dni:String){
         }
     }
 
-    override fun toString(): String = "Nombre = $nombre, edad = $edad, DNI = $dni, sexo = $sexo, peso = $peso, altura = $altura"
+    override fun toString() = "Nombre = $nombre, edad = $edad, DNI = $dni, sexo = $sexo, peso = $peso, altura = $altura"
 }
 
 
