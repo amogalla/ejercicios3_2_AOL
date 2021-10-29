@@ -1,4 +1,5 @@
 var HOMBRE = 'H'
+var MUJER = 'M'
 
 class Persona(private val dni:String){
     protected var nombre:String = ""
@@ -28,6 +29,14 @@ class Persona(private val dni:String){
     }
 
     fun esMayorDeEdad():Boolean= (edad >= 18)
+
+    fun comprobarSexo(sexo:Char): Char {
+        return when (sexo){
+            HOMBRE, MUJER -> sexo
+            else -> HOMBRE
+        }
+    }
+
 }
 
 
