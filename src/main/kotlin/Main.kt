@@ -25,8 +25,9 @@ class Persona(private val dni:String){
             in 20.0..25.0 -> 0
             else -> 1
         }
-
     }
+
+    fun esMayorDeEdad():Boolean= (edad >= 18)
 }
 
 
