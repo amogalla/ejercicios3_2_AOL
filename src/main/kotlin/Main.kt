@@ -11,7 +11,7 @@ class Persona(private val dni:String){
     constructor(dni:String, nombre:String, edad:Int, sexo:Char): this(dni){
         this.nombre = nombre
         this.edad = edad
-        this.sexo = sexo
+        this.sexo = comprobarSexo(sexo)
     }
 
     constructor(dni:String, nombre:String, edad:Int, sexo:Char, peso:Double, altura:Double): this(dni, nombre, edad, sexo){
@@ -30,13 +30,14 @@ class Persona(private val dni:String){
 
     fun esMayorDeEdad():Boolean= (edad >= 18)
 
-    fun comprobarSexo(sexo:Char): Char {
+    private fun comprobarSexo(sexo:Char): Char {
         return when (sexo){
             HOMBRE, MUJER -> sexo
             else -> HOMBRE
         }
     }
 
+    override fun toString(): String = "Nombre = $nombre, edad = $edad, DNI = $dni, sexo = $sexo, peso = $peso, altura = $altura"
 }
 
 
