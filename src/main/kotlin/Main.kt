@@ -11,6 +11,18 @@ class Persona(val dni:String) {
     companion object {
         const val HOMBRE = 'H'
         const val MUJER = 'M'
+        const val INFRAPESO = -1
+        const val PESO_IDEAL = 0
+        const val SOBREPESO = 1
+
+        fun infoPesoIdeal(persona: Persona){
+            when (persona.calcularIMC()){
+                INFRAPESO -> println("Está por debajo de su peso")
+                PESO_IDEAL -> println("Está en su peso ideal")
+                SOBREPESO -> println("Tiene sobrepeso")
+                else -> println("El peso es erróneo")
+            }
+        }
     }
 
 
@@ -28,9 +40,9 @@ class Persona(val dni:String) {
 
     fun calcularIMC(): Int {
         return when (peso/(altura*altura)){
-            in 1.0..20.0 -> -1
-            in 20.0..25.0 -> 0
-            else -> 1
+            in 1.0..20.0 -> INFRAPESO
+            in 20.0..25.0 -> PESO_IDEAL
+            else -> SOBREPESO
         }
     }
 
@@ -92,11 +104,15 @@ fun pedirSexo():Char {
 }
 
 
+
 fun main() {
-    val persona1 = Persona(generarDNI(), pedirNombre(), pedirEdad(), pedirSexo(), pedirPeso(), pedirAltura())
-    println(persona1.sexo)
+    //val persona1 = Persona(generarDNI(), pedirNombre(), pedirEdad(), pedirSexo(), pedirPeso(), pedirAltura())
     val persona2 = Persona(generarDNI(), "Sandra", 27, 'M')
-    println(persona2.dni)
-    val persona3 = Persona(generarDNI(), "Juan", 35, 'H',100.5, 1.80)
-    println(persona2.dni)
+    val persona3 = Persona(generarDNI())
+
+   // Persona.infoPesoIdeal(persona1)
+    Persona.infoPesoIdeal(persona2)
+    Persona.infoPesoIdeal(persona3)
+
+
 }
